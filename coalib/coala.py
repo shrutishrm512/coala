@@ -73,7 +73,11 @@ def main():
 
     if args.non_interactive:
         return mode_non_interactive(console_printer, args)
-    elif args.format:
+
+    if args.format and args.non_interactive:
+        return mode_format(console_printer, args)
+
+    if args.format:
         return mode_format()
 
     return mode_normal(console_printer, log_printer)
